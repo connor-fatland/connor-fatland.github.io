@@ -78,7 +78,7 @@ let CreateCard = function(pageBody){
     artSpot.className = "artspot";
 
     platformIcon.className = "platformicon";
-    platformIcon.src = "media/icons/pc.png";
+    platformIcon.src = "media/icons/unity.png";
 
     cardArt.className = "projectart";
     cardArt.src = "media/test.png";
