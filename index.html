@@ -1,0 +1,36 @@
+<!--I HATE HTML :)-->
+<!--Enjoy all the inlines-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="media/favicon.png">
+        <title>Connor Fatland</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <a class="backgroundcontainer">
+            <video autoplay muted loop style="margin-top: 50px;">
+                <source src="media/vid.mp4" type="video/mp4">
+            </video>
+        </a>
+
+        <header class="navbar">
+            <button class="navtab" id="HOME" onclick="NavTabClick('HOME')">
+                <b>HOME</b>
+            </button>
+            <button class="navtab" id="PROJECTS" onclick="NavTabClick('PROJECTS')">
+                <b>PROJECTS</b>
+            </button>
+            <a class="navtab" href="media/Resume.pdf" target="_blank">
+                <b>RESUME</b>
+            </a>
+        </header>
+        
+        <a id="pagecontent"></a>
+
+        <script src="index.js"></script>
+    </body>
+</html>
