@@ -98,7 +98,7 @@ button{
     display: flex;
     height: 100%;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: stretch;
 }
 
@@ -106,7 +106,8 @@ button{
     background-color: #1A1A1A;
     display: block;
     border-radius: 10px;
-    width: 350px;
+    min-width: 350px;
+    width: 18%;
     overflow: hidden;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.45);
 }
@@ -168,7 +169,7 @@ button{
 }
 
 #description{
-    padding: 5px;
+    padding: 10px;
     font-size: 16px;
     color: white;
 }

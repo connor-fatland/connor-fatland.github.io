@@ -64,11 +64,12 @@ let CreateHomePage = function (){
     pageContent.append(body);
 }
 
-let CreateCard = function(pageBody){
+let CreateCard = function(pageBody, cardJSON){
     let card = document.createElement("a");
     
     card.className = "projectcard";
-    card.href = "https://github.com/connor-fatland"
+    card.href = cardJSON.site;
+    card.target = "_blank";
 
 
     let cardArt = document.createElement("img");
@@ -78,10 +79,10 @@ let CreateCard = function(pageBody){
     artSpot.className = "artspot";
 
     platformIcon.className = "platformicon";
-    platformIcon.src = "media/icons/unity.png";
+    platformIcon.src = cardJSON.platform;
 
     cardArt.className = "projectart";
-    cardArt.src = "media/test.png";
+    cardArt.src = cardJSON.art
 
     artSpot.append(cardArt);
     artSpot.append(platformIcon);
@@ -95,15 +96,15 @@ let CreateCard = function(pageBody){
 
     let textTitle = document.createElement("div");
     textTitle.id = "title";
-    textTitle.textContent = "Metroidvania Project";
+    textTitle.textContent = cardJSON.title;
 
     let genre = document.createElement("div");
     genre.id = "genre";
-    genre.textContent = "Metroidvania Project";
+    genre.textContent = cardJSON.genre;
 
     let description = document.createElement("div");
     description.id = "description";
-    description.textContent = "Metroidvania";
+    description.textContent = cardJSON.description;
 
     cardText.append(textTitle);
     cardText.append(genre);
@@ -120,7 +121,14 @@ let CreateProjectPage = function (){
 
     body.className = "projectbody";
 
-    CreateCard(body);
+    fetch("projects.json").then(response => response.json())
+    .then(json => 
+        {
+            for(let index = 0; index < json.length; index++) {
+                CreateCard(body, json[index])
+            }
+        }
+    );
 
     pageContent.append(body);
 }
