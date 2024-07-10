@@ -5,7 +5,6 @@ const PAGE_STATE = {
 
 let pageState = PAGE_STATE.HOME;
 let pageContent = document.getElementById("pagecontent");
-let projectCards = ["bop","bwup"];
 
 let main = function(){
     document.body.append(pageContent)
@@ -14,14 +13,12 @@ let main = function(){
 }
 
 let ActivateTab = function(target){
-    document.getElementById(target).style.backgroundColor = "white";
-    document.getElementById(target).style.color = "black";
+    document.getElementById(target).className = "activetab";
     pageState = target;
 }
 
 let DisableTab = function(target){
-    document.getElementById(target).style.backgroundColor = "#1A1A1A";
-    document.getElementById(target).style.color = "white";
+    document.getElementById(target).className = "navtab";
 }
 
 // --------------------------------------------------------------------------------------------
