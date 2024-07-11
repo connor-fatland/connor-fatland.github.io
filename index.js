@@ -35,28 +35,105 @@ let UnloadPage = function(){
 }
 
 let CreateHomePage = function (){
-    let body = document.createElement("a");
-    let card = document.createElement("a");
+    let body = document.createElement("div");
+    let card = document.createElement("div");
+    let bubbleflex = document.createElement("div");
+
     let image = document.createElement("img");
+
+    let textflex = document.createElement("div");
+
     let title = document.createElement("h1");
-    let text = document.createElement("div");
+    let text = document.createElement("p");
+    let email = document.createElement("div");
+    let phoneNumber = document.createElement("div");
 
     body.className = "aboutbody";
 
     card.className = "aboutcard"
 
+    textflex.className = "textflex";
+
+    bubbleflex.className = "bubbleflex";
+
+    text.className = "abouttext";
+
     image.src = "media/bodypic.png";
     image.id = "bodypic";
     title.style = "text-align: center;";
-    title.textContent = "Who Am I?";
+    
+    if(typeof window.orientation !== "undefined"){
+        card.style.flexDirection = "column";
+        card.style.alignItems = "center";
+        card.style.height = "auto";
+        card.style.width = "80%";
+
+        image.style.maxWidth = "75%";
+
+        bubbleflex.style.width = "80%";
+        bubbleflex.style.height = "20%";
+        
+    }else{
+        
+    }
     
     // Add File Reader eventually
-    text.textContent = "";
+    title.textContent = "Who Am I?";
+    text.textContent = "Passionate indie dev with a deep love for games. Who spends a good amount of thier freetime analysing what makes games feel good and fun to play.";
+    email.style.marginTop = "20px";
+    email.style.textAlign = "center";
+    email.textContent = "connorfatland@gmail.com";
+    phoneNumber.style.marginTop = "5px";
+    phoneNumber.style.textAlign = "center";
+    phoneNumber.textContent = "(425)-238-2262";
+
+    // yes I know this is a code smell
+    // github bubble ---------------------------------------------------------
+
+    let linkbubble = document.createElement("a");
+    let bubbleart = document.createElement("img");
+
+    linkbubble.className = "linkbubble";
+    linkbubble.href = "https://github.com/connor-fatland";
+    linkbubble.target = "_blank";
+    linkbubble.id = "github";
+
+    bubbleart.className = "bubbleart";
+
+    bubbleart.src = "media/icons/github.png";
+    
+    linkbubble.append(bubbleart);
+
+    // linkedin bubble ---------------------------------------------------------
+
+    let linkBubbleLinkedIn = document.createElement("a");
+    let bubbleArtLinkedIn = document.createElement("img");
+
+    linkBubbleLinkedIn.className = "linkbubble";
+    linkBubbleLinkedIn.href = "https://www.linkedin.com/in/connor-fatland";
+    linkBubbleLinkedIn.target = "_blank";
+    linkBubbleLinkedIn.id = "linkedin";
+
+    bubbleArtLinkedIn.className = "bubbleart";
+
+    bubbleArtLinkedIn.src = "media/icons/linkedin.png";
+    
+    linkBubbleLinkedIn.append(bubbleArtLinkedIn);
+
+    //--------------------------------------------------------------------------
 
     card.append(image);
-    card.append(title);
-    card.append(text);
+    textflex.append(title);
+    textflex.append(text);
+    textflex.append(email);
+    textflex.append(phoneNumber);
+    card.append(textflex);
     body.append(card);
+
+    bubbleflex.append(linkbubble)
+    bubbleflex.append(linkBubbleLinkedIn)
+
+    body.append(bubbleflex);
 
     pageContent.append(body);
 }
@@ -71,7 +148,7 @@ let CreateCard = function(pageBody, cardJSON){
 
     let cardArt = document.createElement("img");
     let platformIcon = document.createElement("img");
-    let artSpot = document.createElement("a");
+    let artSpot = document.createElement("div");
 
     artSpot.className = "artspot";
 
@@ -87,7 +164,7 @@ let CreateCard = function(pageBody, cardJSON){
     card.append(artSpot);
 
 
-    let cardText = document.createElement("a");
+    let cardText = document.createElement("p");
 
     cardText.className = "projectcardtext";
 
@@ -114,7 +191,7 @@ let CreateCard = function(pageBody, cardJSON){
 }
 
 let CreateProjectPage = function (){
-    let body = document.createElement("a");
+    let body = document.createElement("div");
 
     body.className = "projectbody";
 

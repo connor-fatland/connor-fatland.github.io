@@ -94,29 +94,80 @@ button{
 .aboutbody{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     height: 100%;
     width: 100%;
+    flex-direction: column;
+    
 }
 
 .aboutcard{
     background-color: #1A1A1A;
     color: white;
-    display: block;
+    display: flex;
     border-radius: 10px;
     padding: 10px;
-    height: 80%;
+    height: 50%;
     width: 60%;
     overflow: hidden;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.45);
 }
 
+.bubbleflex{
+    height: 40%;
+    width: 60%;
+    display: flex;
+}
+
+.linkbubble{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    height: 75px;
+    width: 75px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.45);
+}
+
+.bubbleart{
+    height: 75%;
+    width: 75%;
+}
+
+#github{
+    background-color: #1A1A1A;
+}
+
+#github:hover{
+    cursor: pointer;
+    background-color: #1f1f1f;
+}
+
+#linkedin{
+    background-color: #004182;
+}
+
+#linkedin:hover{
+    cursor: pointer;
+    background-color: #044b92;
+}
+
 #bodypic{
     max-width: 50%; 
     max-height: 100%; 
-    border-radius: 5px; 
-    float: left; 
-    margin-right: 10px;
+    border-radius: 5px;
+    float: left;
+    aspect-ratio: 1;
+}
+
+.textflex{
+    width: 100%;
+}
+
+.abouttext{
+    margin: 10px;
+    text-align: center;
 }
 
 /* Project Page */
