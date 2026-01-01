@@ -78,8 +78,8 @@ let CreateHomePage = function (){
     }
     
     // Add File Reader eventually
-    title.textContent = "About Connor Fatland";
-    text.textContent = "I'm a primarily self taught developer that loves to make cool things. I have been teaching myself to make games for over 7 years as a hobby and about a year and a half of college education.";
+    title.textContent = "About Me";
+    text.textContent = "I'm a primarily self taught developer that loves to make cool things, I have 7 years of game dev as a hobby and about a year and a half of college education.";
     email.style.marginTop = "20px";
     email.style.textAlign = "center";
     email.textContent = "connorfatland@gmail.com";
