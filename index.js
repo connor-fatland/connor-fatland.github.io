@@ -58,7 +58,7 @@ let CreateHomePage = function (){
 
     text.className = "abouttext";
 
-    image.src = "media/bodypic.png";
+    image.src = "media/bodypic.jpg";
     image.id = "bodypic";
     title.style = "text-align: center;";
     
