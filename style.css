@@ -1,6 +1,7 @@
 @font-face {
     font-family: JetBrainsMono;
     src: url(fonts/JetBrainsMono-VariableFont_wght.ttf);
+    font-weight: 100 800;
 }
 
 *, *::before, *::after{
@@ -49,9 +50,14 @@ button{
     color: white;
     font-family: inherit;
     font-size: 24px;
+    font-weight: 800;
     outline: none;
 
     text-transform: uppercase;
+}
+
+.navtab b{
+    font-weight: inherit;
 }
 
 .navtab:hover {
