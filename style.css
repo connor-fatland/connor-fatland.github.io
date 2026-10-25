@@ -226,6 +226,16 @@ button{
     grid-area: 1 / 1;
 }
 
+/* Dark corner behind the platform icon so it stands out from the art.
+   No backdrop-filter blur: it leaves a bright seam along the card's rounded corner */
+.artspot::after{
+    content: "";
+    grid-area: 1 / 1;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(circle at top left, rgba(0, 0, 0, 0.6), transparent 100px);
+}
+
 .platformicon{
     width: 25px;
     height: 25px;
@@ -236,6 +246,7 @@ button{
     grid-area: 1 / 1;
 
     z-index: 2;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.8));
 }
 
 .projectcardtext{

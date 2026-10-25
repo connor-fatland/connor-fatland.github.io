@@ -20,7 +20,7 @@
         "genre": "Roguelike",
         "description": "A medium length description to see how two or three lines of text wrap inside the card.",
         "platform": "media/icons/godot.png",
-        "art": "media/asterian-depths-art.png",
+        "art": "media/bodypic.jpg",
         "site": "https://github.com/connor-fatland"
     },
     {
@@ -44,7 +44,7 @@
         "genre": "Tool",
         "description": "Web app placeholder.",
         "platform": "media/icons/web.png",
-        "art": "media/asterian-depths-art.png",
+        "art": "media/bodypic.jpg",
         "site": "https://github.com/connor-fatland"
     },
     {
@@ -60,7 +60,7 @@
         "genre": "Strategy",
         "description": "PC placeholder.",
         "platform": "media/icons/pc.png",
-        "art": "media/asterian-depths-art.png",
+        "art": "media/bodypic.jpg",
         "site": "https://github.com/connor-fatland"
     },
     {
