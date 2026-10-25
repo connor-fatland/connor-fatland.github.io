@@ -302,3 +302,70 @@ button{
         margin-right: 5px;
     }
 }
+
+/* Landscape phones */
+
+@media (orientation: landscape) and (max-height: 500px){
+    body:has(.aboutbody){
+        height: 100dvh;
+    }
+
+    #pagecontent{
+        padding: 10px;
+        min-height: 0;
+    }
+
+    .aboutbody{
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: center;
+        gap: 10px;
+        min-height: 0;
+    }
+
+    .bubbleflex{
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        flex-shrink: 0;
+    }
+
+    .linkbubble{
+        width: 56.25px;
+        height: 56.25px;
+    }
+
+    .aboutcard{
+        flex-direction: row;
+        flex: 0 1 1000px;
+        width: auto;
+        min-width: 0;
+        min-height: 0;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    #bodypic{
+        flex: 0 0 auto;
+        height: 100%;
+        width: auto;
+        max-width: 45%;
+    }
+
+    /* Text scales with the screen height so it always fits beside the photo */
+    .textflex{
+        flex: 1;
+        min-width: 0;
+        height: 100%;
+        font-size: clamp(9px, 3.5dvh, 16px);
+    }
+
+    .textflex h1{
+        font-size: clamp(14px, 7dvh, 32px);
+        margin: 0;
+    }
+
+    .abouttext{
+        margin: 0 5px;
+    }
+}
