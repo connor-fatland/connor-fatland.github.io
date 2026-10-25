@@ -23,12 +23,15 @@ body{
     flex-direction: column;
 }
 
+/* Positioned above #pagecontent so its shadow falls over cards scrolling underneath */
 .navbar{
     flex: 0 0 50px;
+    position: relative;
+    z-index: 3;
     background-color: #1A1A1A;
     display: flex;
     align-items: center;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.466);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.85);
     border-bottom: 2px solid rgba(255, 255, 255, 0.12);
 }
 
