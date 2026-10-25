@@ -63,8 +63,8 @@ let CreateHomePage = function (){
     title.style = "text-align: center;";
     
     // Add File Reader eventually
-    title.textContent = "About Me";
-    text.textContent = "I'm a primarily self taught developer that loves to make cool things, I have 7 years of game dev as a hobby and about a year and a half of college education.";
+    title.textContent = "Your Developer";
+    text.textContent = "I’m a detail oriented developer that is driven to find and apply the correct solutions to any problem. Programming for over 8 years I know how to test and ensure stable code that delivers a convenient and comfortable user experience.";
     email.style.marginTop = "20px";
     email.style.textAlign = "center";
     email.textContent = "connorfatland@gmail.com";

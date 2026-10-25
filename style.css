@@ -262,10 +262,17 @@ button{
 @media (max-width: 800px){
     .aboutcard{
         flex-direction: column;
+        width: 75%;
+        padding: 10px 10px;
     }
 
     #bodypic{
         flex-basis: auto;
-        width: 75%;
+        width: 100%;
+    }
+
+    .abouttext{
+        margin-left: 5px;
+        margin-right: 5px;
     }
 }
