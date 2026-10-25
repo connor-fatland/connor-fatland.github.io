@@ -387,7 +387,7 @@ button{
     }
 }
 
-/* Phones, portrait or landscape: project cards stack in one scrolling column */
+/* Phones, portrait or landscape: project cards stack in one scrolling column (landscape overrides this below) */
 
 @media (max-width: 800px), (orientation: landscape) and (max-height: 500px){
     .projectbody{
@@ -405,5 +405,42 @@ button{
 
     #description{
         display: none;
+    }
+}
+
+/* Landscape phones: project cards sit in one row that scrolls sideways.
+   A grid with subgrid cards puts every card's art in one shared row, so if one card
+   needs more room for its text, all of the art shrinks by the same amount */
+
+@media (orientation: landscape) and (max-height: 500px){
+    .projectbody{
+        flex: 1 1 auto;
+        min-height: 0;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 300px;
+        grid-template-rows: minmax(0, 200px) auto;
+        row-gap: 0;
+        column-gap: 15px;
+        justify-content: start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 10px;
+
+        /* Stretch over #pagecontent's side padding so cards scroll right to the screen edges */
+        margin-inline: -10px;
+        padding-inline: 10px;
+    }
+
+    .projectcard{
+        display: grid;
+        grid-row: span 2;
+        grid-template-rows: subgrid;
+        width: auto;
+        min-height: 0;
+    }
+
+    .artspot{
+        min-height: 0;
     }
 }
