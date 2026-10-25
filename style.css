@@ -262,13 +262,39 @@ button{
 @media (max-width: 800px){
     .aboutcard{
         flex-direction: column;
-        width: 75%;
+        width: 100%;
         padding: 10px 10px;
     }
 
+    /* Home page fits the screen: the photo gives up height so the text and bubbles fit */
+    body:has(.aboutbody){
+        height: 100dvh;
+    }
+
+    #pagecontent, .aboutbody, .aboutcard{
+        min-height: 0;
+    }
+
+    #pagecontent{
+        padding: 15px;
+    }
+
+    .aboutbody{
+        gap: 15px;
+    }
+
     #bodypic{
-        flex-basis: auto;
+        flex: 0 1 auto;
         width: 100%;
+        min-height: 0;
+    }
+
+    .textflex{
+        flex: 0 0 auto;
+    }
+
+    .bubbleflex{
+        flex-shrink: 0;
     }
 
     .abouttext{
