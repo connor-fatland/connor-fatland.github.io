@@ -422,7 +422,7 @@ button{
         grid-template-rows: minmax(0, 200px) auto;
         row-gap: 0;
         column-gap: 15px;
-        justify-content: start;
+        justify-content: safe center; /* centered when the cards fit, left-aligned once they need to scroll */
         overflow-x: auto;
         overflow-y: hidden;
         padding-bottom: 10px;
