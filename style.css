@@ -3,6 +3,10 @@
     src: url(fonts/JetBrainsMono-VariableFont_wght.ttf);
 }
 
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
 a{
     text-decoration: none;
 }
@@ -14,11 +18,13 @@ html{
 body{
     background-color: black;
     margin: 0px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar{
-    height: 50px;
-    width: 100%;
+    flex: 0 0 50px;
     background-color: #1A1A1A;
     display: flex;
     align-items: center;
@@ -30,26 +36,15 @@ button{
 }
 
 .navtab{
-    height: 50px;
-    line-height: 50px;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #1A1A1A;
-    text-align: center;
     color: white;
+    font-family: inherit;
     font-size: 24px;
-    width: 100%;
-    outline: none;
-
-    text-transform: uppercase;
-}
-
-.activetab{
-    height: 50px;
-    line-height: 50px;
-    background-color: white;
-    text-align: center;
-    color: #1A1A1A;
-    font-size: 24px;
-    width: 100%;
     outline: none;
 
     text-transform: uppercase;
@@ -60,10 +55,14 @@ button{
     cursor: pointer;
 }
 
+.navtab.activetab{
+    background-color: white;
+    color: #1A1A1A;
+}
+
 .backgroundcontainer{
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    position: fixed;
+    inset: 50px 0 0 0;
     overflow: hidden;
     z-index: -1;
 }
@@ -78,49 +77,49 @@ button{
 }
 
 .backgroundcontainer video{
-    min-height: 100%; 
-    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 #pagecontent{
-    height: calc(100vh - 100px); 
-    width: calc(100vw - 50px); 
+    flex: 1;
     padding: 25px;
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Home Page */
 
 .aboutbody{
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    height: 100%;
-    width: 100%;
     flex-direction: column;
-    
+    gap: 20px;
 }
 
 .aboutcard{
     background-color: #1A1A1A;
     color: white;
     display: flex;
+    align-items: center;
+    gap: 20px;
     border-radius: 10px;
     padding: 10px;
-    height: 50%;
-    width: 60%;
+    width: min(100%, 1000px);
     overflow: hidden;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.45);
 }
 
 .bubbleflex{
-    height: 40%;
-    width: 60%;
     display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .linkbubble{
-    margin: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -154,15 +153,15 @@ button{
 }
 
 #bodypic{
-    max-width: 50%; 
-    max-height: 100%; 
+    flex: 0 1 40%;
+    min-width: 0;
     border-radius: 5px;
-    float: left;
     aspect-ratio: 1;
+    object-fit: cover;
 }
 
 .textflex{
-    width: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -178,19 +177,21 @@ button{
 /* Project Page */
 
 .projectbody{
+    flex: 1;
     display: flex;
-    height: 100%;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: stretch;
+    gap: 25px;
 }
 
 .projectcard{
     background-color: #1A1A1A;
-    display: block;
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
-    min-width: 350px;
-    width: 18%;
+    flex: 0 1 350px;
     overflow: hidden;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.45);
 }
@@ -201,8 +202,7 @@ button{
 }
 
 .artspot{
-    width: 100%;
-    height: 200px;
+    flex: 0 0 200px;
     background-color: black;
     display: grid;
     overflow: hidden;
@@ -229,9 +229,8 @@ button{
 }
 
 .projectcardtext{
+    flex: 1;
     padding: 10px;
-    width: calc(100% - 20px);
-    height: calc(75% - 20px);
     display: flex;
     flex-direction: column;
 }
@@ -256,4 +255,17 @@ button{
     padding: 10px;
     font-size: 16px;
     color: white;
+}
+
+/* Narrow screens */
+
+@media (max-width: 800px){
+    .aboutcard{
+        flex-direction: column;
+    }
+
+    #bodypic{
+        flex-basis: auto;
+        width: 75%;
+    }
 }

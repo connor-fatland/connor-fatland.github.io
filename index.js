@@ -13,12 +13,12 @@ let main = function(){
 }
 
 let ActivateTab = function(target){
-    document.getElementById(target).className = "activetab";
+    document.getElementById(target).classList.add("activetab");
     pageState = target;
 }
 
 let DisableTab = function(target){
-    document.getElementById(target).className = "navtab";
+    document.getElementById(target).classList.remove("activetab");
 }
 
 // --------------------------------------------------------------------------------------------
@@ -61,21 +61,6 @@ let CreateHomePage = function (){
     image.src = "media/bodypic.jpg";
     image.id = "bodypic";
     title.style = "text-align: center;";
-    
-    if(typeof window.orientation !== "undefined"){
-        card.style.flexDirection = "column";
-        card.style.alignItems = "center";
-        card.style.height = "auto";
-        card.style.width = "80%";
-
-        image.style.maxWidth = "75%";
-
-        bubbleflex.style.width = "80%";
-        bubbleflex.style.height = "20%";
-        
-    }else{
-        
-    }
     
     // Add File Reader eventually
     title.textContent = "About Me";
@@ -164,7 +149,7 @@ let CreateCard = function(pageBody, cardJSON){
     card.append(artSpot);
 
 
-    let cardText = document.createElement("p");
+    let cardText = document.createElement("div");
 
     cardText.className = "projectcardtext";
 
