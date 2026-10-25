@@ -6,5 +6,69 @@
         "platform": "media/icons/unity.png",
         "art": "media/asterian-depths-art.png",
         "site": "https://github.com/connor-fatland"
+    },
+    {
+        "title": "Test Project 1",
+        "genre": "Platformer",
+        "description": "Short description.",
+        "platform": "media/icons/unity.png",
+        "art": "media/asterian-depths-art.png",
+        "site": "https://github.com/connor-fatland"
+    },
+    {
+        "title": "Test Project 2",
+        "genre": "Roguelike",
+        "description": "A medium length description to see how two or three lines of text wrap inside the card.",
+        "platform": "media/icons/godot.png",
+        "art": "media/asterian-depths-art.png",
+        "site": "https://github.com/connor-fatland"
+    },
+    {
+        "title": "Test Project 3 With A Really Long Title",
+        "genre": "Puzzle",
+        "description": "Checks how a long title wraps on the card.",
+        "platform": "media/icons/unreal.png",
+        "art": "media/asterian-depths-art.png",
+        "site": "https://github.com/connor-fatland"
+    },
+    {
+        "title": "Test Project 4",
+        "genre": "Shooter",
+        "description": "A much longer description that keeps going so you can see how the card handles a big block of text. It should push the bottom of the card down and make every card in the row grow to match, since the cards stretch to the tallest one.",
+        "platform": "media/icons/steam.png",
+        "art": "media/asterian-depths-art.png",
+        "site": "https://github.com/connor-fatland"
+    },
+    {
+        "title": "Test Project 5",
+        "genre": "Tool",
+        "description": "Web app placeholder.",
+        "platform": "media/icons/web.png",
+        "art": "media/asterian-depths-art.png",
+        "site": "https://github.com/connor-fatland"
+    },
+    {
+        "title": "Test Project 6",
+        "genre": "Mobile Game",
+        "description": "Android placeholder.",
+        "platform": "media/icons/android.png",
+        "art": "media/asterian-depths-art.png",
+        "site": "https://github.com/connor-fatland"
+    },
+    {
+        "title": "Test Project 7",
+        "genre": "Strategy",
+        "description": "PC placeholder.",
+        "platform": "media/icons/pc.png",
+        "art": "media/asterian-depths-art.png",
+        "site": "https://github.com/connor-fatland"
+    },
+    {
+        "title": "Test Project 8",
+        "genre": "",
+        "description": "Empty genre to check spacing.",
+        "platform": "media/icons/unity.png",
+        "art": "media/asterian-depths-art.png",
+        "site": "https://github.com/connor-fatland"
     }
 ]

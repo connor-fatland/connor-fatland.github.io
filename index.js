@@ -85,7 +85,7 @@ let CreateHomePage = function (){
 
     bubbleart.className = "bubbleart";
 
-    bubbleart.src = "media/icons/github.png";
+    bubbleart.src = "media/icons/github.svg";
     
     linkbubble.append(bubbleart);
 
