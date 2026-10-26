@@ -239,6 +239,7 @@ button{
     flex: 0 0 200px;
     background-color: black;
     display: grid;
+    grid-template: 100% / 100%; /* one cell the size of the art spot, so the art's height: 100% works */
     overflow: hidden;
 }
 
@@ -246,6 +247,8 @@ button{
     width: 100%;
     height: 100%;
     display: block;
+    object-fit: cover; /* scale to fill without stretching, cropping the overflow evenly */
+    object-position: center;
 
     grid-area: 1 / 1;
 }
