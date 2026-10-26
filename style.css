@@ -90,6 +90,7 @@ button{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    image-rendering: pixelated; /* nearest-neighbour scaling keeps the pixel art sharp */
 }
 
 /* Only the page content scrolls, so the navbar stays at the top */
