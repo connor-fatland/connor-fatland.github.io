@@ -3,7 +3,7 @@
         "title": "Asterian Depths",
         "genre": "Metroidvania",
         "description": "Passion project that is currently unavailable due to code refactoring and quality assurance.",
-        "platform": "media/icons/unity.png",
+        "platform": "media/icons/unity.svg",
         "art": "media/projects/asterian-depths-art.png",
         "site": "https://github.com/connor-fatland"
     }

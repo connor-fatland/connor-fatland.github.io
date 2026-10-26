@@ -152,9 +152,11 @@ button{
     border: 0.125em solid rgba(255, 255, 255, 0.12);
 }
 
+/* One size for every bubble icon. Icon files should be drawn edge to edge (no built-in margin,
+   like Simple Icons); 62% keeps even a square logo's corners clear of the circle */
 .bubbleart{
-    height: 75%;
-    width: 75%;
+    height: 62%;
+    width: 62%;
     object-fit: contain;
 }
 
