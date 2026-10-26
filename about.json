@@ -1,0 +1,19 @@
+{
+    "picture": "media/bodypic.jpg",
+    "title": "About Connor Fatland",
+    "text": "I’m a detail oriented developer that is driven to find and apply the correct solutions to any problem. Programming for over 8 years I know how to test and ensure stable code that delivers a convenient and comfortable user experience.",
+    "email": "connorfatland@gmail.com",
+    "phone": "(425)-238-2262",
+    "links": [
+        {
+            "id": "github",
+            "site": "https://github.com/connor-fatland",
+            "icon": "media/icons/github.svg"
+        },
+        {
+            "id": "linkedin",
+            "site": "https://www.linkedin.com/in/connor-fatland",
+            "icon": "media/icons/linkedin.png"
+        }
+    ]
+}

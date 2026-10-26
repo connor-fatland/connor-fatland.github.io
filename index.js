@@ -13,12 +13,12 @@ let main = function(){
 }
 
 let ActivateTab = function(target){
-    document.getElementById(target).className = "activetab";
+    document.getElementById(target).classList.add("activetab");
     pageState = target;
 }
 
 let DisableTab = function(target){
-    document.getElementById(target).className = "navtab";
+    document.getElementById(target).classList.remove("activetab");
 }
 
 // --------------------------------------------------------------------------------------------
@@ -34,8 +34,24 @@ let UnloadPage = function(){
     CollapsingUnload(pageContent);
 }
 
-let CreateHomePage = function (){
-    let body = document.createElement("div");
+let CreateLinkBubble = function(bubbleflex, linkJSON){
+    let linkbubble = document.createElement("a");
+    let bubbleart = document.createElement("img");
+
+    linkbubble.className = "linkbubble";
+    linkbubble.href = linkJSON.site;
+    linkbubble.target = "_blank";
+    linkbubble.id = linkJSON.id;
+
+    bubbleart.className = "bubbleart";
+    bubbleart.src = linkJSON.icon;
+
+    linkbubble.append(bubbleart);
+
+    bubbleflex.append(linkbubble);
+}
+
+let CreateAboutCard = function(pageBody, aboutJSON){
     let card = document.createElement("div");
     let bubbleflex = document.createElement("div");
 
@@ -48,79 +64,28 @@ let CreateHomePage = function (){
     let email = document.createElement("div");
     let phoneNumber = document.createElement("div");
 
-    body.className = "aboutbody";
-
-    card.className = "aboutcard"
+    card.className = "aboutcard";
 
     textflex.className = "textflex";
 
     bubbleflex.className = "bubbleflex";
 
+    title.className = "abouttitle";
     text.className = "abouttext";
+    email.className = "aboutemail";
+    phoneNumber.className = "aboutphone";
 
-    image.src = "media/bodypic.jpg";
+    image.src = aboutJSON.picture;
     image.id = "bodypic";
-    title.style = "text-align: center;";
-    
-    if(typeof window.orientation !== "undefined"){
-        card.style.flexDirection = "column";
-        card.style.alignItems = "center";
-        card.style.height = "auto";
-        card.style.width = "80%";
 
-        image.style.maxWidth = "75%";
+    title.textContent = aboutJSON.title;
+    text.textContent = aboutJSON.text;
+    email.textContent = aboutJSON.email;
+    phoneNumber.textContent = aboutJSON.phone;
 
-        bubbleflex.style.width = "80%";
-        bubbleflex.style.height = "20%";
-        
-    }else{
-        
+    for(let index = 0; index < aboutJSON.links.length; index++) {
+        CreateLinkBubble(bubbleflex, aboutJSON.links[index]);
     }
-    
-    // Add File Reader eventually
-    title.textContent = "About Me";
-    text.textContent = "I'm a primarily self taught developer that loves to make cool things, I have 7 years of game dev as a hobby and about a year and a half of college education.";
-    email.style.marginTop = "20px";
-    email.style.textAlign = "center";
-    email.textContent = "connorfatland@gmail.com";
-    phoneNumber.style.marginTop = "5px";
-    phoneNumber.style.textAlign = "center";
-    phoneNumber.textContent = "(425)-238-2262";
-
-    // yes I know this is a code smell
-    // github bubble ---------------------------------------------------------
-
-    let linkbubble = document.createElement("a");
-    let bubbleart = document.createElement("img");
-
-    linkbubble.className = "linkbubble";
-    linkbubble.href = "https://github.com/connor-fatland";
-    linkbubble.target = "_blank";
-    linkbubble.id = "github";
-
-    bubbleart.className = "bubbleart";
-
-    bubbleart.src = "media/icons/github.png";
-    
-    linkbubble.append(bubbleart);
-
-    // linkedin bubble ---------------------------------------------------------
-
-    let linkBubbleLinkedIn = document.createElement("a");
-    let bubbleArtLinkedIn = document.createElement("img");
-
-    linkBubbleLinkedIn.className = "linkbubble";
-    linkBubbleLinkedIn.href = "https://www.linkedin.com/in/connor-fatland";
-    linkBubbleLinkedIn.target = "_blank";
-    linkBubbleLinkedIn.id = "linkedin";
-
-    bubbleArtLinkedIn.className = "bubbleart";
-
-    bubbleArtLinkedIn.src = "media/icons/linkedin.png";
-    
-    linkBubbleLinkedIn.append(bubbleArtLinkedIn);
-
-    //--------------------------------------------------------------------------
 
     card.append(image);
     textflex.append(title);
@@ -128,12 +93,18 @@ let CreateHomePage = function (){
     textflex.append(email);
     textflex.append(phoneNumber);
     card.append(textflex);
-    body.append(card);
+    pageBody.append(card);
 
-    bubbleflex.append(linkbubble)
-    bubbleflex.append(linkBubbleLinkedIn)
+    pageBody.append(bubbleflex);
+}
 
-    body.append(bubbleflex);
+let CreateHomePage = function (){
+    let body = document.createElement("div");
+
+    body.className = "aboutbody";
+
+    fetch("about.json").then(response => response.json())
+    .then(json => CreateAboutCard(body, json));
 
     pageContent.append(body);
 }
@@ -164,7 +135,7 @@ let CreateCard = function(pageBody, cardJSON){
     card.append(artSpot);
 
 
-    let cardText = document.createElement("p");
+    let cardText = document.createElement("div");
 
     cardText.className = "projectcardtext";
 

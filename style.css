@@ -1,6 +1,11 @@
 @font-face {
     font-family: JetBrainsMono;
     src: url(fonts/JetBrainsMono-VariableFont_wght.ttf);
+    font-weight: 100 800;
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
 }
 
 a{
@@ -14,15 +19,21 @@ html{
 body{
     background-color: black;
     margin: 0px;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Positioned above #pagecontent so its shadow falls over cards scrolling underneath */
 .navbar{
-    height: 50px;
-    width: 100%;
+    flex: 0 0 50px;
+    position: relative;
+    z-index: 3;
     background-color: #1A1A1A;
     display: flex;
     align-items: center;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.466);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.85);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.12);
 }
 
 button{
@@ -30,29 +41,23 @@ button{
 }
 
 .navtab{
-    height: 50px;
-    line-height: 50px;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #1A1A1A;
-    text-align: center;
     color: white;
+    font-family: inherit;
     font-size: 24px;
-    width: 100%;
+    font-weight: 800;
     outline: none;
 
     text-transform: uppercase;
 }
 
-.activetab{
-    height: 50px;
-    line-height: 50px;
-    background-color: white;
-    text-align: center;
-    color: #1A1A1A;
-    font-size: 24px;
-    width: 100%;
-    outline: none;
-
-    text-transform: uppercase;
+.navtab b{
+    font-weight: inherit;
 }
 
 .navtab:hover {
@@ -60,10 +65,14 @@ button{
     cursor: pointer;
 }
 
+.navtab.activetab{
+    background-color: white;
+    color: #1A1A1A;
+}
+
 .backgroundcontainer{
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    position: fixed;
+    inset: 50px 0 0 0;
     overflow: hidden;
     z-index: -1;
 }
@@ -78,49 +87,56 @@ button{
 }
 
 .backgroundcontainer video{
-    min-height: 100%; 
-    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated; /* nearest-neighbour scaling keeps the pixel art sharp */
 }
 
+/* Only the page content scrolls, so the navbar stays at the top */
 #pagecontent{
-    height: calc(100vh - 100px); 
-    width: calc(100vw - 50px); 
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
     padding: 25px;
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Home Page */
 
 .aboutbody{
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    height: 100%;
-    width: 100%;
     flex-direction: column;
-    
+    gap: 20px;
 }
 
 .aboutcard{
     background-color: #1A1A1A;
     color: white;
     display: flex;
+    align-items: center;
+    gap: 20px;
     border-radius: 10px;
     padding: 10px;
-    height: 50%;
-    width: 60%;
+    width: min(100%, 1000px);
     overflow: hidden;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(255, 255, 255, 0.12);
 }
 
+/* Same width as the about card so the bubbles line up with its left edge */
 .bubbleflex{
-    height: 40%;
-    width: 60%;
     display: flex;
+    justify-content: flex-start;
+    width: min(100%, 1000px);
+    gap: 20px;
 }
 
 .linkbubble{
-    margin: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -128,11 +144,13 @@ button{
     height: 75px;
     width: 75px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(255, 255, 255, 0.12);
 }
 
 .bubbleart{
     height: 75%;
     width: 75%;
+    object-fit: contain;
 }
 
 #github{
@@ -154,18 +172,22 @@ button{
 }
 
 #bodypic{
-    max-width: 50%; 
-    max-height: 100%; 
+    flex: 0 1 40%;
+    min-width: 0;
     border-radius: 5px;
-    float: left;
     aspect-ratio: 1;
+    object-fit: cover;
 }
 
 .textflex{
-    width: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.abouttitle{
+    text-align: center;
 }
 
 .abouttext{
@@ -175,24 +197,37 @@ button{
     text-align: center;
 }
 
+.aboutemail{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.aboutphone{
+    margin-top: 5px;
+    text-align: center;
+}
+
 /* Project Page */
 
 .projectbody{
+    flex: 1;
     display: flex;
-    height: 100%;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: stretch;
+    gap: 25px;
 }
 
 .projectcard{
     background-color: #1A1A1A;
-    display: block;
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
-    min-width: 350px;
-    width: 18%;
+    flex: 0 1 350px;
     overflow: hidden;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(255, 255, 255, 0.12);
 }
 
 .projectcard:hover{
@@ -201,8 +236,7 @@ button{
 }
 
 .artspot{
-    width: 100%;
-    height: 200px;
+    flex: 0 0 200px;
     background-color: black;
     display: grid;
     overflow: hidden;
@@ -216,6 +250,16 @@ button{
     grid-area: 1 / 1;
 }
 
+/* Dark corner behind the platform icon so it stands out from the art.
+   No backdrop-filter blur: it leaves a bright seam along the card's rounded corner */
+.artspot::after{
+    content: "";
+    grid-area: 1 / 1;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(circle at top left, rgba(0, 0, 0, 0.6), transparent 100px);
+}
+
 .platformicon{
     width: 25px;
     height: 25px;
@@ -226,12 +270,12 @@ button{
     grid-area: 1 / 1;
 
     z-index: 2;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.8));
 }
 
 .projectcardtext{
+    flex: 1;
     padding: 10px;
-    width: calc(100% - 20px);
-    height: calc(75% - 20px);
     display: flex;
     flex-direction: column;
 }
@@ -256,4 +300,168 @@ button{
     padding: 10px;
     font-size: 16px;
     color: white;
+}
+
+/* Narrow screens */
+
+@media (max-width: 800px){
+    .aboutcard{
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 10px;
+    }
+
+    /* Home page fits the screen: the photo gives up height so the text and bubbles fit */
+    .aboutbody, .aboutcard{
+        min-height: 0;
+    }
+
+    #pagecontent{
+        padding: 15px;
+    }
+
+    .aboutbody{
+        gap: 15px;
+    }
+
+    #bodypic{
+        flex: 0 1 auto;
+        width: 100%;
+        min-height: 0;
+    }
+
+    .textflex{
+        flex: 0 0 auto;
+    }
+
+    .bubbleflex{
+        flex-shrink: 0;
+        justify-content: center;
+    }
+
+    .abouttext{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+/* Landscape phones */
+
+@media (orientation: landscape) and (max-height: 500px){
+    #pagecontent{
+        padding: 10px;
+    }
+
+    .aboutbody{
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: center;
+        gap: 10px;
+        min-height: 0;
+    }
+
+    .bubbleflex{
+        flex-direction: column;
+        justify-content: center;
+        width: auto;
+        gap: 10px;
+        flex-shrink: 0;
+    }
+
+    .linkbubble{
+        width: 56.25px;
+        height: 56.25px;
+    }
+
+    .aboutcard{
+        flex-direction: row;
+        flex: 0 1 1000px;
+        width: auto;
+        min-width: 0;
+        min-height: 0;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    #bodypic{
+        flex: 0 0 auto;
+        height: 100%;
+        width: auto;
+        max-width: 45%;
+    }
+
+    /* Text scales with the screen height so it always fits beside the photo */
+    .textflex{
+        flex: 1;
+        min-width: 0;
+        height: 100%;
+        font-size: clamp(9px, 3.5dvh, 16px);
+    }
+
+    .textflex h1{
+        font-size: clamp(14px, 7dvh, 32px);
+        margin: 0;
+    }
+
+    .abouttext{
+        margin: 0 5px;
+    }
+}
+
+/* Phones, portrait or landscape: project cards stack in one scrolling column (landscape overrides this below) */
+
+@media (max-width: 800px), (orientation: landscape) and (max-height: 500px){
+    .projectbody{
+        flex: 0 0 auto;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .projectcard{
+        flex: 0 0 auto;
+        width: min(100%, 350px);
+    }
+
+    #description{
+        display: none;
+    }
+}
+
+/* Landscape phones: project cards sit in one row that scrolls sideways.
+   A grid with subgrid cards puts every card's art in one shared row, so if one card
+   needs more room for its text, all of the art shrinks by the same amount */
+
+@media (orientation: landscape) and (max-height: 500px){
+    .projectbody{
+        flex: 1 1 auto;
+        min-height: 0;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 300px;
+        grid-template-rows: minmax(0, 200px) auto;
+        row-gap: 0;
+        column-gap: 15px;
+        justify-content: safe center; /* centered when the cards fit, left-aligned once they need to scroll */
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 10px;
+
+        /* Stretch over #pagecontent's side padding so cards scroll right to the screen edges */
+        margin-inline: -10px;
+        padding-inline: 10px;
+    }
+
+    .projectcard{
+        display: grid;
+        grid-row: span 2;
+        grid-template-rows: subgrid;
+        width: auto;
+        min-height: 0;
+    }
+
+    .artspot{
+        min-height: 0;
+    }
 }
