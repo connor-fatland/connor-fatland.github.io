@@ -10,6 +10,9 @@ let main = function(){
     document.body.append(pageContent)
     ActivateTab(pageState);
     CreateHomePage();
+
+    window.addEventListener("resize", FitAboutText);
+    document.fonts.ready.then(FitAboutText);
 }
 
 let ActivateTab = function(target){
@@ -77,6 +80,7 @@ let CreateAboutCard = function(pageBody, aboutJSON){
 
     image.src = aboutJSON.picture;
     image.id = "bodypic";
+    image.onload = FitAboutText;
 
     title.textContent = aboutJSON.title;
     text.textContent = aboutJSON.text;
@@ -96,6 +100,34 @@ let CreateAboutCard = function(pageBody, aboutJSON){
     pageBody.append(card);
 
     pageBody.append(bubbleflex);
+
+    FitAboutText();
+}
+
+// On portrait phones the photo gives up height so everything fits on screen.
+// Shrink the card text until the photo keeps at least 60% of its height.
+let FitAboutText = function(){
+    let card = document.querySelector(".aboutcard");
+    let image = document.getElementById("bodypic");
+
+    if(!card || !image || !image.naturalWidth){
+        return;
+    }
+
+    let textflex = card.querySelector(".textflex");
+    textflex.style.fontSize = "";
+
+    if(getComputedStyle(card).flexDirection !== "column"){
+        return;
+    }
+
+    let size = parseFloat(getComputedStyle(textflex).fontSize);
+    let minSize = size * 0.5;
+
+    while(image.clientHeight < image.clientWidth * 0.6 && size > minSize){
+        size -= 0.5;
+        textflex.style.fontSize = size + "px";
+    }
 }
 
 let CreateHomePage = function (){
